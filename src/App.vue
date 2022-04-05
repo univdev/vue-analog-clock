@@ -4,6 +4,12 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  .github-button-link {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    text-decoration: none;
+  }
 }
 </style>
 
@@ -11,16 +17,22 @@
 .container
   clock-component(
     :date="current")
+  a.github-button-link(
+    href="https://github.com/univdev/vue-analog-clock"
+    target="_blank")
+    github-button.github-button
 </template>
 
 <script lang="ts">
 import { computed, ComputedRef, defineComponent, onBeforeMount, onBeforeUnmount } from 'vue';
 import { useStore } from 'vuex';
 import ClockComponent from './components/Clock.vue';
+import GithubButton from './components/GithubButton.vue';
 
 export default defineComponent({
   components: {
     ClockComponent,
+    GithubButton,
   },
   setup() {
     const store = useStore();
