@@ -1,3 +1,6 @@
+import { Module } from 'vuex';
+import { RootState } from '../index';
+
 export type State = {
   time: Date,
 };
@@ -31,8 +34,11 @@ export const getters = {
   },
 };
 
-export default {
+export const module: Module<State, RootState> = {
+  namespaced: true,
   state,
   mutations,
   getters,
-}
+};
+
+export default module;

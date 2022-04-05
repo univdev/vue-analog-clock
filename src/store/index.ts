@@ -1,11 +1,12 @@
 import { createStore } from 'vuex';
-import App from './modules/App';
+import AppModule, { State as AppState } from './modules/App';
+
+export interface RootState {
+  app: AppState,
+};
 
 export default createStore({
   modules: {
-    app: {
-      namespaced: true,
-      ...App,
-    },
+    app: AppModule,
   },
 });
