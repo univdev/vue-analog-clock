@@ -45,8 +45,8 @@ export default defineComponent({
   },
   setup(props) {
     const maxOfReference: number = 60; // 레퍼런스는 무조건 분침, 초침이기 때문에 60 고정
-    const degreeOfPiece: number = 360 / 12;
     const max: ComputedRef<number> = computed(() => props.type === 'hours' ? 12 : 60);
+    const degreeOfPiece: number = 360 / max.value;
     const degreeOfReference: ComputedRef<number> = computed(() => props.reference / maxOfReference * degreeOfPiece);
     const degree: ComputedRef<number> = computed(() => ((props.value / max.value * 360) + degreeOfReference.value));
     const classList: Object = {
