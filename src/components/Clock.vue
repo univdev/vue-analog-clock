@@ -28,10 +28,12 @@
 .clock
   clock-hand.clock-hand(
     type="hours"
-    :value="hours")
+    :value="hours"
+    :reference="minutes")
   clock-hand.clock-hand(
     type="minutes"
-    :value="minutes")
+    :value="minutes"
+    :reference="seconds")
   clock-hand.clock-hand(
     type="seconds"
     :value="seconds")
