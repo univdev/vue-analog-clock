@@ -17,10 +17,11 @@
 .container
   clock-component(
     :date="current")
+    template(#tooltip) {{ date }}
   a.github-button-link(
     href="https://github.com/univdev/vue-analog-clock"
     target="_blank")
-    github-button.github-button
+    github-button.github-button.animate__animated.animate__fadeInUp
 </template>
 
 <script lang="ts">
@@ -38,6 +39,11 @@ export default defineComponent({
     const store = useStore();
     const second = 1000;
     const current: ComputedRef<Date> = computed(() => store.state.app.time);
+    const date: ComputedRef<string> = computed(() => {
+      const yyyymmdd = store.getters['app/GET_YYYYMMDD'];
+      const hhmmss = store.getters['app/GET_HHMMSS'];
+      return `${yyyymmdd} ${hhmmss}`;
+    });
     const initializeCurrentTime = () => {
       const date = new Date();
       store.commit('app/SET_TIME', date);
@@ -52,6 +58,7 @@ export default defineComponent({
     });
     return {
       current,
+      date,
     };
   },
 });

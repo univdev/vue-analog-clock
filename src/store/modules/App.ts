@@ -32,6 +32,13 @@ export const getters = {
     const date = (state.time.getDate()).toString().padStart(2, '0');
     return [year, month, date].join('-');
   },
+  GET_HHMMSS: (state: State) => {
+    if (!state.time) return null;
+    const hours = state.time.getHours();
+    const minutes = state.time.getMinutes().toString().padStart(2, '0');
+    const seconds = state.time.getSeconds().toString().padStart(2, '0');
+    return [hours, minutes, seconds].join(':');
+  },
 };
 
 export const module: Module<State, RootState> = {
